@@ -12,7 +12,7 @@ const client = new pg.Client({
 });
 
 function getPersons(personName, cb) {
-  client.query("SELECT CONCAT(first_name || ' ' || last_name || ', born ' || to_char(birthdate, 'YYYY-MM-DD')) FROM famous_people WHERE first_name = $1 OR last_name = $1", [personName], (err, result) => {
+  client.query("SELECT CONCAT(first_name || ' ' || last_name || ', born ' || TO_CHAR(birthdate, 'YYYY-MM-DD')) FROM famous_people WHERE first_name = $1 OR last_name = $1", [personName], (err, result) => {
     if (err) {
       return console.error("error running query", err);
     } else {
